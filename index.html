@@ -427,24 +427,39 @@
                   素数に重さ log p をつけてフィールドを作り、それを平均して地形 Z(u) を作ります。さらに、その地形がどこでも 0 より下に落ちない（δ_pos &gt; 0）ことをチェックすることで、「このOSが自信をもって答えてよい範囲」を決めています。
                 </p>
 
+                {/* 道しるべ（追加） */}
+                <p className="text-xs md:text-sm text-slate-500 mb-3 font-bold">
+                  このあと、素数計算OSの中身を次の4ステップでざっくり見ていきます。
+                </p>
+
+                {/* 改善された STEP グリッド */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs font-mono text-slate-500">
-                  <div className="px-3 py-2 rounded bg-slate-50 border border-slate-100 flex flex-col gap-1">
+                  <div className="px-3 py-3 rounded bg-slate-50 border border-slate-100 flex flex-col gap-1">
                     <span className="text-emerald-600 font-bold">STEP 01</span>
-                    <span>Weight Field Λ(n)</span>
+                    <span className="text-[11px] text-slate-700 font-sans leading-tight">どの整数にどれくらい「重さ」を置くか決める</span>
+                    <span className="text-[10px] text-slate-400 mt-1">Weight Field Λ(n)</span>
                   </div>
-                  <div className="px-3 py-2 rounded bg-slate-50 border border-slate-100 flex flex-col gap-1">
+                  <div className="px-3 py-3 rounded bg-slate-50 border border-slate-100 flex flex-col gap-1">
                     <span className="text-emerald-600 font-bold">STEP 02</span>
-                    <span>Landscape Z(u)</span>
+                    <span className="text-[11px] text-slate-700 font-sans leading-tight">地形 Z(u) をならして描く</span>
+                    <span className="text-[10px] text-slate-400 mt-1">Landscape Z(u)</span>
                   </div>
-                  <div className="px-3 py-2 rounded bg-slate-50 border border-slate-100 flex flex-col gap-1">
+                  <div className="px-3 py-3 rounded bg-slate-50 border border-slate-100 flex flex-col gap-1">
                     <span className="text-emerald-600 font-bold">STEP 03</span>
-                    <span>Safety (δ_pos &gt; 0)</span>
+                    <span className="text-[11px] text-slate-700 font-sans leading-tight">谷が 0 より上にあるか（安全か）を調べる</span>
+                    <span className="text-[10px] text-slate-400 mt-1">Safety (δ_pos &gt; 0)</span>
                   </div>
-                  <div className="px-3 py-2 rounded bg-slate-50 border border-slate-100 flex flex-col gap-1">
+                  <div className="px-3 py-3 rounded bg-slate-50 border border-slate-100 flex flex-col gap-1">
                     <span className="text-violet-500 font-bold">STEP 04</span>
-                    <span>Quantum Potential</span>
+                    <span className="text-[11px] text-slate-700 font-sans leading-tight">同じ地形を量子のポテンシャルとして眺める</span>
+                    <span className="text-[10px] text-slate-400 mt-1">Quantum Potential</span>
                   </div>
                 </div>
+
+                {/* 専門家向け補足（少しトーンを落として追加） */}
+                <p className="text-[10px] text-slate-400 mt-4 text-right leading-tight">
+                   つまり、本OSの出力はすべて数理的に保証された領域（無仮定・有限閉包の100%保証領域）でのみ行われます。
+                </p>
               </section>
 
               {/* ブロック2：区間入力（白カード） */}
@@ -663,4 +678,4 @@
       root.render(<App />);
     </script>
   </body>
-</html>"
+</html>
