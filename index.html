@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>素数計算OS 数理ラボ：素数重力と安全ゾーン</title>
+    <title>素数計算OS 数理ラボ：Λ(n)と安全ゾーン δ_pos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,6 +15,14 @@
     <style>
       body {
         font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      }
+      /* 数式用フォントクラス */
+      .math-font {
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+      }
+      .math-symbol {
+        font-family: 'Times New Roman', Times, serif;
       }
       /* カスタムスクロールバー（ライトテーマ用） */
       ::-webkit-scrollbar {
@@ -357,7 +365,7 @@
               </div>
             </div>
             <div className="mt-2 text-xs text-slate-400 bg-slate-900/30 p-3 rounded-lg border border-slate-800">
-              紫の曲線がポテンシャル <span className="font-mono text-violet-400">V(x)</span>、緑の線がエネルギー <span className="font-mono text-emerald-400">E</span> のモデルです。
+              紫の曲線がポテンシャル <span className="math-font text-violet-400">V(x)</span>、緑の線がエネルギー <span className="math-font text-emerald-400">E</span> のモデルです。
               ポテンシャル障壁による粒子の挙動（閉じ込めや透過）を視覚的に模索します。
             </div>
           </div>
@@ -397,7 +405,7 @@
                       素数計算OS 数理ラボ
                     </h1>
                     <p className="text-[10px] text-slate-500 font-mono tracking-wide">
-                      Prime Calculation OS: Mathematical Lab & Visualization
+                      Laboratory for Λ(n) and Safety Zone δ_pos
                     </p>
                   </div>
                 </div>
@@ -414,17 +422,29 @@
                   素数計算OS 数理モデル
                 </div>
                 <h2 className="text-xl md:text-2xl font-bold mb-4 text-slate-800">
-                  素数計算OSの中身：素数重力と「安全ゾーン」
+                  素数計算OS 数理ラボ：Λ(n)と安全ゾーン δ_pos
                 </h2>
                 <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6 max-w-3xl">
-                  このページは、素数計算OSのうら側で動いている
-                  <span className="text-emerald-600 font-bold mx-1">
-                  「素数に重さをつけたフィールド」と「安全ゾーン δ_pos」
+                  本デモは、素数計算OSの裏側にある
+                  <span className="text-emerald-600 font-bold mx-1 whitespace-nowrap">
+                  Λ(n) に由来する有限窓畳み込み Z(u)
                   </span>
-                  のしくみを、図と簡単な式でまとめた数理解説ページです。
+                  <span className="text-slate-500 text-xs mx-1">（素数の局所密度）</span>
+                  と、その下界評価 <span className="math-font">δ<sub>pos</sub></span>
+                  <span className="text-slate-500 text-xs mx-1">（安全マージン）</span>
+                  の構造を可視化する数理実験室です。
                 </p>
+                
                 <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6 max-w-3xl">
-                  素数に重さ log p をつけてフィールドを作り、それを平均して地形 Z(u) を作ります。さらに、その地形がどこでも 0 より下に落ちない（δ_pos &gt; 0）ことをチェックすることで、「このOSが自信をもって答えてよい範囲」を決めています。
+                  素数に重さ <span className="math-font">log p</span> をつけてフィールドを作り、
+                  それを平均して地形 <span className="math-font">Z(u)</span> を作ります。
+                  その地形がどこでも 0 より下に落ちない
+                  （<span className="math-font">δ<sub>pos</sub> &gt; 0</span>）
+                  ことをチェックすることで、OSが自信をもって答えてよい範囲を決定します。
+                  <br/>
+                  <span className="text-xs text-slate-400 mt-2 block">
+                    ※ 私たちはこのモデルを、親しみを込めて "Prime Gravity" (素数重力) と呼んでいます。
+                  </span>
                 </p>
 
                 {/* 道しるべ（追加） */}
@@ -452,14 +472,9 @@
                   <div className="px-3 py-3 rounded bg-slate-50 border border-slate-100 flex flex-col gap-1">
                     <span className="text-violet-500 font-bold">STEP 04</span>
                     <span className="text-[11px] text-slate-700 font-sans leading-tight">同じ地形を量子のポテンシャルとして眺める</span>
-                    <span className="text-[10px] text-slate-400 mt-1">Quantum Potential</span>
+                    <span className="text-[10px] text-slate-400 mt-1">Optional: Quantum View</span>
                   </div>
                 </div>
-
-                {/* 専門家向け補足（少しトーンを落として追加） */}
-                <p className="text-[10px] text-slate-400 mt-4 text-right leading-tight">
-                   つまり、本OSの出力はすべて数理的に保証された領域（無仮定・有限閉包の100%保証領域）でのみ行われます。
-                </p>
               </section>
 
               {/* ブロック2：区間入力（白カード） */}
@@ -472,7 +487,7 @@
                     <div className="text-xs text-slate-600 mb-6 leading-relaxed bg-white p-3 rounded border border-slate-200">
                       <span className="font-bold text-slate-700">①区間を選ぶ → ②棒が変わる → ③地形と安全ゾーン（δ_demo）が変わる</span>
                       <br/>
-                      下の3つのつまみは、本番の素数計算OSで「どの区間を」「どれくらいの窓で」「どの強さで平滑化して」δ_pos &gt; 0 をチェックするかに対応する、証明の心臓部パラメータです。
+                      下の3つのつまみは、本番の素数計算OSで「どの区間を」「どれくらいの窓で」「どの強さで平滑化して」<span className="math-font">δ<sub>pos</sub> &gt; 0</span> をチェックするかに対応する、証明の心臓部パラメータです。
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
@@ -480,7 +495,7 @@
                         <label className="block text-xs font-bold text-slate-700 mb-1">
                         どこから見るか（開始の整数）
                         </label>
-                        <div className="text-[10px] text-slate-500 mb-2">どのあたりの素数世界を切り取るか（場所 u）</div>
+                        <div className="text-[10px] text-slate-500 mb-2">どのあたりの素数世界を切り取るか（観測の中心点 u）</div>
                         <input
                         type="number"
                         value={start}
@@ -493,7 +508,7 @@
                         <label className="block text-xs font-bold text-slate-700 mb-1">
                         いくつ分を見るか（区間の幅）
                         </label>
-                        <div className="text-[10px] text-slate-500 mb-2">その世界をどれくらい広く眺めるか（窓の大きさ X₀）</div>
+                        <div className="text-[10px] text-slate-500 mb-2">その世界をどれくらい広く眺めるか（積分する窓幅 X₀）</div>
                         <input
                         type="number"
                         value={length}
@@ -505,7 +520,7 @@
                         <label className="block text-xs font-bold text-slate-700 mb-1">
                         平均をとる範囲（なめらかさ）
                         </label>
-                        <div className="text-[10px] text-slate-500 mb-2">細かいデコボコを見るか、大局的な流れを見るか（分解能 vs 安定性）</div>
+                        <div className="text-[10px] text-slate-500 mb-2">細かい密度変化を見るか、平均的な傾向を見るか（平滑化の強さ）</div>
                         <input
                         type="range"
                         min="3"
@@ -531,7 +546,7 @@
                   <span className="text-emerald-500 font-bold">01</span> Weight Field
                 </h2>
                 <p className="text-sm text-slate-600 mb-6">
-                   素数の位置に <span className="font-mono text-emerald-600 font-bold">log p</span> という「重み」の柱を立てます。
+                   素数の位置に <span className="math-font text-emerald-600 font-bold">log p</span> という「重み」の柱を立てます。
                    これが地形形成の起点となる分布です。
                 </p>
                 
@@ -541,13 +556,13 @@
                 </div>
 
                 <ExpertToggle title="専門家メモ：フォン・マンゴルト関数 Λ(n)">
-                  Λ(n) = log p （n = p^k, p 素数, k ≥ 1 のとき）, それ以外 0 と定義します。
+                  <span className="math-font">Λ(n) = log p</span> （<span className="math-font">n = p^k</span>, p 素数, k ≥ 1 のとき）, それ以外 0 と定義します。
                   <br />
                   <br />
-                  本デモでは、<span className="text-emerald-200">n = p の場合のみ log n として表示する簡略版</span>を用いており、素数冪 p^k の寄与は割愛しています。
+                  本デモでは、<span className="text-emerald-200">n = p の場合のみ <span className="math-font">log n</span> として表示する簡略版</span>を用いており、素数冪 <span className="math-font">p^k</span> の寄与は割愛しています。
                   <br />
-                  素数計算OSの実装では、完全な Λ(n) を有限窓で畳み込むことで Z(u) を構成し、
-                  さらに有限閉包（finite closure）条件の中で δ_pos &gt; 0 を評価しています。
+                  素数計算OSの実装では、完全な <span className="math-font">Λ(n)</span> を有限窓で畳み込むことで <span className="math-font">Z(u)</span> を構成し、
+                  さらに有限閉包（finite closure）条件の中で <span className="math-font">δ<sub>pos</sub> &gt; 0</span> を評価しています。
                 </ExpertToggle>
               </section>
 
@@ -558,7 +573,7 @@
                         <span className="text-emerald-500 font-bold">02</span> Landscape Z(u)
                     </h2>
                     <p className="text-sm text-slate-600 mb-6">
-                        近傍の重みを平均化処理することで、連続的な地形 <span className="font-mono text-emerald-600 font-bold">Z(u)</span> が出現します。
+                        近傍の重みを平均化処理することで、連続的な地形 <span className="math-font text-emerald-600 font-bold">Z(u)</span> が出現します。
                     </p>
                     
                     {/* モニターエリア（黒） */}
@@ -567,17 +582,17 @@
                     </div>
                     
                     <ExpertToggle title="専門家メモ：Z(u) と -ζ'/ζ">
-                        解析的には、Z(u) は -ζ'/ζ(1/2 + iu) の有限窓平滑版として定式化されます。
+                        解析的には、<span className="math-font">Z(u)</span> は <span className="math-font">-ζ'/ζ(1/2 + iu)</span> の有限窓平滑版として定式化されます。
                         <br />
                         <br />
                         本デモでは以下の簡易モデルを採用しています：
                         <br />
-                        ・Λ(n) の有限区間上の列を入力とし、
+                        ・<span className="math-font">Λ(n)</span> の有限区間上の列を入力とし、
                         <br />
-                        ・単純移動平均フィルタを適用して Z(u) を近似描画。
+                        ・単純移動平均フィルタを適用して <span className="math-font">Z(u)</span> を近似描画。
                         <br />
                         <br />
-                        理論コア部分では、Fejér–Yukawa 型カーネル K を用いた畳み込み Z_K(u) = (Λ * K)(u) を構成し、その下界評価を行っています。
+                        理論コア部分では、Fejér–Yukawa 型カーネル <span className="math-font">K</span> を用いた畳み込み <span className="math-font">Z<sub>K</sub>(u) = (Λ * K)(u)</span> を構成し、その下界評価を行っています。
                     </ExpertToggle>
                   </div>
 
@@ -586,7 +601,7 @@
                         <span className="text-emerald-500 font-bold">03</span> Safety Margin
                     </h2>
                     <p className="text-sm text-slate-600 mb-4">
-                        地形の極小値 <span className="font-mono font-bold text-slate-700">Z_min</span> がノイズ項よりも優位であれば、系は安定領域にあります。
+                        地形の極小値 <span className="math-font font-bold text-slate-700">Z<sub>min</sub></span> がノイズ項よりも優位であれば、系は安定領域にあります。
                     </p>
 
                     {/* モニターエリア（黒） */}
@@ -595,20 +610,18 @@
                     </div>
 
                     <ExpertToggle title="専門家メモ：δ_pos の評価不等式">
-                        解析レイヤーでは、有限窓 Z(u) の一様下界 Z_min と、誤差項の総和を比較します：
+                        本プロジェクトの理論部分では、未証明仮定（RH/GRH/zero-density仮定など）を使わない <span className="math-font">δ<sub>pos</sub></span> の下界評価を設計しています。
                         <br />
                         <br />
-                        β · Z_min &gt; c_WG + c_zero_fin + c_zero_tail(T0) + c_tail(X0) + c_win(W, R)
+                        本デモ自体は、その <span className="text-emerald-200">“構造” のイメージを示すための玩具モデル</span> です。
                         <br />
                         <br />
-                        これらを外向き丸めを用いた区間演算（Σ₁ 不等式）として処理し、main − error &gt; 0 を証明します。
+                        解析レイヤーでの実際の評価式は以下の通りです：
                         <br />
-                        <span className="text-emerald-200">※本デモの δ_demo は係数を固定した玩具モデルであり、実際の厳密評価とは数値的に一致しません。</span>
+                        <span className="math-font">β · Z<sub>min</sub> &gt; c<sub>WG</sub> + c<sub>zero_fin</sub> + c<sub>zero_tail</sub>(T₀) + c<sub>tail</sub>(X₀) + c<sub>win</sub>(W, R)</span>
                         <br />
                         <br />
-                        <span className="text-emerald-200 border border-emerald-500/30 bg-emerald-500/10 px-2 py-1 rounded block mt-2 text-xs">
-                           本OSの安全ゾーン δ_pos の評価は、RH/GRH/zero-density などの未証明仮定を一切用いない「条件なし」の解析に基づきます。
-                        </span>
+                        これらを外向き丸めを用いた区間演算（Σ₁ 不等式）として処理し、<span className="math-font">main − error &gt; 0</span> を証明します。
                     </ExpertToggle>
                   </div>
               </section>
@@ -618,10 +631,10 @@
                 <div className="absolute top-0 right-0 w-64 h-64 bg-violet-100/50 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
                 
                 <h2 className="text-base font-semibold mb-2 text-slate-800 font-mono flex items-center gap-2">
-                   <span className="text-violet-500 font-bold">04</span> Quantum Potential
+                   <span className="text-violet-500 font-bold">04</span> Optional : Quantum View (物理好き向けのおまけ)
                 </h2>
                 <p className="text-sm text-slate-600 mb-6">
-                  同一の地形を物理学的な「ポテンシャル V(x)」として再解釈します。
+                  同一の地形を物理学的な「ポテンシャル <span className="math-font">V(x)</span>」として再解釈します。
                   素数分布が形成する場の中での量子の振る舞い（束縛状態やトンネル効果）を模索する視点です。
                 </p>
 
@@ -631,14 +644,14 @@
                 </div>
 
                 <ExpertToggle title="専門家メモ：Schrödinger 作用素との対応">
+                  ここは完全にインフォーマルな対応付けのスケッチであり、本OSの安全証明とは独立です。
+                  <br />
+                  <br />
                   1次元 Schrödinger 方程式
                   <br />
-                  &nbsp;&nbsp;(-d²/dx² + V(x)) ψ(x) = E ψ(x)
+                  &nbsp;&nbsp;<span className="math-font">(-d²/dx² + V(x)) ψ(x) = E ψ(x)</span>
                   <br />
-                  において、V(x) をゼータ関数等に由来するポテンシャルと見なすアプローチは、リーマン零点のスペクトル解釈（Berry-Keating等）と接続します。
-                  <br />
-                  <br />
-                  本プロジェクトの拡張系では、このポテンシャルを用いた零点分布とスペクトル対応、および有限閉包下での力学系的な安定性解析を設計しています。
+                  において、<span className="math-font">V(x)</span> をゼータ関数等に由来するポテンシャルと見なすアプローチは、リーマン零点のスペクトル解釈（Berry-Keating等）を着想源としています。
                 </ExpertToggle>
               </section>
 
@@ -648,9 +661,7 @@
                   Conclusion
                 </h2>
                 <p className="text-sm text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-                  Prime Gravity モデルにおいて、地形の安全性が確認された区間（δ_pos > 0）でのみ、システムは決定論的な回答を出力します。
-                  数論的な「重み」の制御が情報システムとしての「信頼性」を担保し、
-                  さらには物理的な「安定性」とも通底する構造を持つことを、有限窓 Z(u) と δ_pos の不等式で明示します。
+                  <span className="math-font">Λ(n)</span> の有限窓畳み込み <span className="math-font">Z(u)</span> と、その一様下界 <span className="math-font">δ<sub>pos</sub></span> が正であることが確認された区間において、システムは決定論的な回答を出力します。この <span className="math-font">δ<sub>pos</sub></span> の構造は、情報システムの信頼性設計や物理的な安定性解析との類似を連想させるため、別プロジェクトで詳細化を進めています。
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                   <button
