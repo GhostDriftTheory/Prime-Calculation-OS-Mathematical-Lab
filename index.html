@@ -436,14 +436,18 @@
                 </p>
                 
                 <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6 max-w-3xl">
-                  {'素数に重さ $\\log p$ をつけてフィールドを作り、それを平均して地形 $Z(u)$ を作ります。その地形がどこでも 0 より下に落ちない（$\\delta_{\\text{pos}} > 0$）ことをチェックすることで、OSが自信をもって答えてよい範囲を決定します。'}
+                  素数に重さ <span className="math-font">log p</span> をつけてフィールドを作り、
+                  それを平均して地形 <span className="math-font">Z(u)</span> を作ります。
+                  その地形がどこでも 0 より下に落ちない
+                  （<span className="math-font">δ<sub>pos</sub> &gt; 0</span>）
+                  ことをチェックすることで、OSが自信をもって答えてよい範囲を決定します。
                   <br/>
                   <span className="text-xs text-slate-400 mt-2 block">
                     ※ 私たちはこのモデルを、親しみを込めて "Prime Gravity" (素数重力) と呼んでいます。
                   </span>
                 </p>
 
-                {/* 道しるべ（追加） */}
+                {/* 道しるべ */}
                 <p className="text-xs md:text-sm text-slate-500 mb-3 font-bold">
                   このあと、素数計算OSの中身を次の4ステップでざっくり見ていきます。
                 </p>
@@ -491,7 +495,7 @@
                         <label className="block text-xs font-bold text-slate-700 mb-1">
                         どこから見るか（開始の整数）
                         </label>
-                        <div className="text-[10px] text-slate-500 mb-2">どのあたりの素数世界を切り取るか（観測の中心点 u）</div>
+                        <div className="text-[10px] text-slate-500 mb-2 whitespace-nowrap">観測する場所（中心点 u）</div>
                         <input
                         type="number"
                         value={start}
@@ -504,7 +508,7 @@
                         <label className="block text-xs font-bold text-slate-700 mb-1">
                         いくつ分を見るか（区間の幅）
                         </label>
-                        <div className="text-[10px] text-slate-500 mb-2">その世界をどれくらい広く眺めるか（積分する窓幅 X₀）</div>
+                        <div className="text-[10px] text-slate-500 mb-2 whitespace-nowrap">観測範囲の広さ（窓幅 X₀）</div>
                         <input
                         type="number"
                         value={length}
@@ -516,7 +520,7 @@
                         <label className="block text-xs font-bold text-slate-700 mb-1">
                         平均をとる範囲（なめらかさ）
                         </label>
-                        <div className="text-[10px] text-slate-500 mb-2">細かい密度変化を見るか、平均的な傾向を見るか（平滑化の強さ）</div>
+                        <div className="text-[10px] text-slate-500 mb-2 whitespace-nowrap">細かさの調整（平滑化強度）</div>
                         <input
                         type="range"
                         min="3"
@@ -652,14 +656,14 @@
               </section>
 
               {/* ブロック6：OSとの接続 */}
-              <section className="bg-white border border-slate-200 rounded-xl p-8 text-center shadow-sm">
+              <section className="bg-white border border-slate-200 rounded-xl p-6 md:p-8 shadow-sm text-left">
                 <h2 className="text-lg font-semibold mb-4 text-slate-800 tracking-wide font-mono">
                   Conclusion
                 </h2>
-                <p className="text-sm text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-sm text-slate-600 mb-8 max-w-2xl leading-relaxed">
                   <span className="math-font">Λ(n)</span> の有限窓畳み込み <span className="math-font">Z(u)</span> と、その一様下界 <span className="math-font">δ<sub>pos</sub></span> が正であることが確認された区間において、システムは決定論的な回答を出力します。この <span className="math-font">δ<sub>pos</sub></span> の構造は、情報システムの信頼性設計や物理的な安定性解析との類似を連想させるため、別プロジェクトで詳細化を進めています。
                 </p>
-                <div className="flex flex-wrap justify-center gap-4">
+                <div className="flex flex-wrap justify-start gap-4">
                   <a
                     href="https://ghostdrifttheory.github.io/prime-counter-demo/"
                     className="px-6 py-2.5 rounded-lg bg-emerald-500 text-white font-bold text-sm hover:bg-emerald-600 transition shadow-lg shadow-emerald-200 inline-block"
