@@ -436,11 +436,7 @@
                 </p>
                 
                 <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6 max-w-3xl">
-                  素数に重さ <span className="math-font">log p</span> をつけてフィールドを作り、
-                  それを平均して地形 <span className="math-font">Z(u)</span> を作ります。
-                  その地形がどこでも 0 より下に落ちない
-                  （<span className="math-font">δ<sub>pos</sub> &gt; 0</span>）
-                  ことをチェックすることで、OSが自信をもって答えてよい範囲を決定します。
+                  {'素数に重さ $\\log p$ をつけてフィールドを作り、それを平均して地形 $Z(u)$ を作ります。その地形がどこでも 0 より下に落ちない（$\\delta_{\\text{pos}} > 0$）ことをチェックすることで、OSが自信をもって答えてよい範囲を決定します。'}
                   <br/>
                   <span className="text-xs text-slate-400 mt-2 block">
                     ※ 私たちはこのモデルを、親しみを込めて "Prime Gravity" (素数重力) と呼んでいます。
@@ -664,11 +660,12 @@
                   <span className="math-font">Λ(n)</span> の有限窓畳み込み <span className="math-font">Z(u)</span> と、その一様下界 <span className="math-font">δ<sub>pos</sub></span> が正であることが確認された区間において、システムは決定論的な回答を出力します。この <span className="math-font">δ<sub>pos</sub></span> の構造は、情報システムの信頼性設計や物理的な安定性解析との類似を連想させるため、別プロジェクトで詳細化を進めています。
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
-                  <button
-                    className="px-6 py-2.5 rounded-lg bg-emerald-500 text-white font-bold text-sm hover:bg-emerald-600 transition shadow-lg shadow-emerald-200"
+                  <a
+                    href="https://ghostdrifttheory.github.io/prime-counter-demo/"
+                    className="px-6 py-2.5 rounded-lg bg-emerald-500 text-white font-bold text-sm hover:bg-emerald-600 transition shadow-lg shadow-emerald-200 inline-block"
                   >
                     Project Home
-                  </button>
+                  </a>
                 </div>
               </section>
             </main>
