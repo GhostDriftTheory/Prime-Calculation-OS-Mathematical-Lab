@@ -429,6 +429,17 @@
                 <h2 className="text-xl md:text-2xl font-bold mb-4 text-slate-800">
                   素数計算OS 数理ラボ：Λ(n)と安全ゾーン δ_pos
                 </h2>
+
+                {/* ★追加：無仮定保証のバッジ */}
+                <div className="mb-6 p-3 bg-emerald-50 border border-emerald-100 rounded-lg text-emerald-800 text-xs md:text-sm font-medium flex items-start gap-2">
+                  <svg className="w-5 h-5 flex-shrink-0 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                  <span className="leading-relaxed pt-0.5">
+                    本 OS はリーマン予想・GRH・zero-density 仮定等の未証明の仮定を一切必要としません。
+                  </span>
+                </div>
+
                 <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6 max-w-3xl">
                   本デモは、素数計算OSの裏側にある
                   <span className="text-emerald-600 font-bold mx-1 whitespace-nowrap">
@@ -661,11 +672,11 @@
               </section>
 
               {/* ブロック6：OSとの接続 */}
-              <section className="bg-white border border-slate-200 rounded-xl p-6 md:p-8 shadow-sm text-left">
-                <h2 className="text-lg font-semibold mb-4 text-slate-800 tracking-wide font-mono">
+              <section className="bg-white border border-slate-200 rounded-xl p-8 text-center shadow-sm">
+                <h2 className="text-lg font-semibold mb-4 text-slate-800 tracking-wide font-mono text-left">
                   Conclusion
                 </h2>
-                <p className="text-sm text-slate-600 mb-8 max-w-2xl leading-relaxed">
+                <p className="text-sm text-slate-600 mb-8 max-w-2xl leading-relaxed text-left">
                   <span className="math-font">Λ(n)</span> の有限窓畳み込み <span className="math-font">Z(u)</span> と、その一様下界 <span className="math-font">δ<sub>pos</sub></span> が正であることが確認された区間において、システムは決定論的な回答を出力します。この <span className="math-font">δ<sub>pos</sub></span> の構造は、情報システムの信頼性設計や物理的な安定性解析との類似を連想させるため、別プロジェクトで詳細化を進めています。
                 </p>
                 <div className="flex flex-wrap justify-start gap-4">
