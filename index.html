@@ -130,16 +130,21 @@
       // ===== コンポーネント =====
 
       // ExpertToggle: 黒系カードとしてデザイン（プロ仕様モニター感）
+      // スマホ最適化：タイトルをtruncateし、1行に収める工夫を追加
       function ExpertToggle({ title, children }) {
         const [open, setOpen] = useState(false);
         return (
           <div className="mt-4 border border-slate-700/50 rounded-lg bg-slate-900 overflow-hidden shadow-md">
             <button
-              className="w-full flex items-center justify-between px-4 py-2 text-sm text-emerald-400 hover:bg-slate-800 transition-colors"
+              className="w-full flex items-center justify-between px-3 py-2.5 text-emerald-400 hover:bg-slate-800 transition-colors gap-3"
               onClick={() => setOpen((o) => !o)}
             >
-              <span className="font-mono tracking-wide text-xs md:text-sm font-semibold">{title}</span>
-              <span className="text-[10px] ml-2 opacity-70 text-slate-400">{open ? "▲ CLOSE" : "▼ EXPERT NOTE"}</span>
+              <span className="font-mono tracking-tight text-[11px] md:text-sm font-semibold text-left truncate flex-1">
+                {title}
+              </span>
+              <span className="text-[9px] md:text-[10px] opacity-70 text-slate-400 whitespace-nowrap flex-shrink-0 border border-slate-700 px-2 py-0.5 rounded bg-slate-800/50">
+                {open ? "▲ CLOSE" : "▼ MEMO"}
+              </span>
             </button>
             {open && (
               <div className="px-4 py-4 text-xs md:text-sm text-slate-300 whitespace-pre-wrap border-t border-slate-800 bg-slate-950/50 leading-relaxed font-sans">
@@ -429,9 +434,9 @@
                   <span className="text-emerald-600 font-bold mx-1 whitespace-nowrap">
                   Λ(n) に由来する有限窓畳み込み Z(u)
                   </span>
-                  <span className="text-slate-500 text-xs mx-1">（素数の局所密度）</span>
+                  <span className="text-slate-500 text-xs mx-1 whitespace-nowrap">（素数の局所密度）</span>
                   と、その下界評価 <span className="math-font">δ<sub>pos</sub></span>
-                  <span className="text-slate-500 text-xs mx-1">（安全マージン）</span>
+                  <span className="text-slate-500 text-xs mx-1 whitespace-nowrap">（安全マージン）</span>
                   の構造を可視化する数理実験室です。
                 </p>
                 
